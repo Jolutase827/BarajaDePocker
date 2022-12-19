@@ -16,6 +16,21 @@ public class Jugador {
         return totalyPoints;
     }
 
+    public int getPointsRecursive(int posicion, int suma){
+        if (suma<=21 && posicion>= cartas.length){
+            return suma;
+        }
+        if (posicion>=cartas.length){
+            return -1;
+        }
+        if (cartas[posicion].getNumero().getPuntuatuion().length>1){
+            getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[1]);
+            getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[0]);
+        }
+
+         return getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[0]);
+    }
+
 
 
     public String  getCardsPlayer(){
