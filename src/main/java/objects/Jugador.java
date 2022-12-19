@@ -15,6 +15,9 @@ public class Jugador {
 
         return totalyPoints;
     }
+
+
+
     public String  getCardsPlayer(){
         String cardsPlayer = "";
         for (Carta card: cartas)
@@ -30,12 +33,19 @@ public class Jugador {
         cartas1[cartas.length] = stealedCard;
         cartas = cartas1;
     }
+    public String getNombre(){
+        return nombre;
+    }
 
 
     @Override
     public String toString(){
-        return "Nombre del jugador: " + nombre + "\n"+
-                "Cartas del jugador: " + cartas + "\n"+
-                "Total puntos: " + getPointsPlayer();
+        String salida= "Nombre del jugador: " + nombre + "\n";
+        salida += "Cartas del jugador: ";
+        for (Carta carta : cartas)
+            salida += carta +" ";
+        salida+= "\n";
+        salida+="Total puntos: " + getPointsPlayer();
+        return salida;
     }
 }

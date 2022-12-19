@@ -1,7 +1,7 @@
 package objects;
 
 public enum Numero {
-    AS('A',new int[]{1,10}),
+    AS('A',new int[]{1,11}),
     DOS('2', new int[]{2}),
     TRES('3',new int[]{3}),
     CUATRO('4',new int[]{4}),
