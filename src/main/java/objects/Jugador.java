@@ -8,27 +8,21 @@ public class Jugador {
         this.nombre = nombre;
         this.cartas = new Carta[0];
     }
-    public int getPointsPlayer(){
-        int totalyPoints = 0;
-        for (Carta carta: cartas)
-            totalyPoints += carta.getNumero().getPuntuatuion()[0];
-
-        return totalyPoints;
-    }
 
     public int getPointsRecursive(int posicion, int suma){
         if (suma<=21 && posicion>= cartas.length){
             return suma;
         }
         if (posicion>=cartas.length){
-            return -1;
+            return suma;
         }
-        if (cartas[posicion].getNumero().getPuntuatuion().length>1){
-            getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[1]);
-            getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[0]);
-        }
+        if (cartas[posicion].getNumero().getPuntuatuion().length>1) {
+            if (getPointsRecursive(posicion + 1, suma + cartas[posicion].getNumero().getPuntuatuion()[1]) < 21) {
+                return getPointsRecursive(posicion + 1, suma + cartas[posicion].getNumero().getPuntuatuion()[1]);
+            }
 
-         return getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[0]);
+        }
+        return getPointsRecursive(posicion+1, suma+cartas[posicion].getNumero().getPuntuatuion()[0]);
     }
 
 
@@ -60,7 +54,7 @@ public class Jugador {
         for (Carta carta : cartas)
             salida += carta +" ";
         salida+= "\n";
-        salida+="Total puntos: " + getPointsPlayer();
+        salida+="Total puntos: " + getPointsRecursive(0,0);
         return salida;
     }
 }
