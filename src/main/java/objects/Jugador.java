@@ -17,7 +17,7 @@ public class Jugador {
             return suma;
         }
         if (cartas[posicion].getNumero().getPuntuatuion().length>1) {
-            if (getPointsRecursive(posicion + 1, suma + cartas[posicion].getNumero().getPuntuatuion()[1]) < 21) {
+            if (getPointsRecursive(posicion + 1, suma + cartas[posicion].getNumero().getPuntuatuion()[1]) <= 21) {
                 return getPointsRecursive(posicion + 1, suma + cartas[posicion].getNumero().getPuntuatuion()[1]);
             }
 
